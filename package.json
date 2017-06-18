@@ -1,0 +1,9 @@
+{
+  "name": "tefloon",
+  "version": "0.1.0",
+  "description": "State management library",
+  "main": "index.js",
+  "repository": "https://github.com/salvador-barboza/tefloon.git",
+  "author": "salvador-barboza <salvador.barboza.portillo@gmail.com>",
+  "license": "MIT"
+}
