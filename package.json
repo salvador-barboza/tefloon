@@ -5,5 +5,12 @@
   "main": "index.js",
   "repository": "https://github.com/salvador-barboza/tefloon.git",
   "author": "salvador-barboza <salvador.barboza.portillo@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "jest": "^20.0.4"
+  }
 }
