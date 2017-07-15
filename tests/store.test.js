@@ -1,22 +1,47 @@
 const Store = require('../src/store.js');
 
-test('Should print nini', () => {
+//todo: make real tests
+test('Should commit and dispatch', () => {
   let initialState = {
-    name: 'boby',
-    cancion: 'desvelado'
+    name: 'Paul',
+    apellido: 'Gilbert',
+    sencillos: [
+      {
+        name: 'Get out of my Yard',
+        year: '2012',
+        reviews: [
+          {
+            id: 1,
+            text: 'Very great album'
+          }
+        ]
+      }
+    ]
   }
 
-  let mutators = {
+  let mutations = {
     setName: (state, name) => {
       state.set('name', name);
     }
   }
 
-  let store = new Store(initialState, mutators);
-  expect(store).toHaveProperty('state');
-  expect(store).toHaveProperty('commit');
+  let actions = {
+    fetchNameFromNetwork: (state) => {
+      state.commit('setName', 'niniFromNetwork');
+    }
+  }
 
+  let store = new Store(initialState, mutations, actions);
   store.commit('setName', 'nini');
   expect(store.state.name).toEqual('nini');
+
+  store.dispatch('fetchNameFromNetwork');
+  expect(store.state.name).toEqual('niniFromNetwork');
+
+  // store.observe('name', (val) => {
+  //   expect(store.state.name).toEqual('niniFromObserver');
+  // });
+
+  // store.commit('setName', 'niniFromObserver');
 
 });
