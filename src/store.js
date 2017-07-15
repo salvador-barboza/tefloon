@@ -29,7 +29,7 @@ let Store = function(initialState, mutations, actions) {
 Store.prototype.dispatch = function(actionType, payload) {
   let action = this.actionMap.get(actionType);
   if (action) {
-    action.call(this, { commit: this.commit.bind(this) }, payload);
+    return action.call(this, { commit: this.commit.bind(this) }, payload);
   } else {
     console.warn(`Action ${actionType} is not registered.`);
   }

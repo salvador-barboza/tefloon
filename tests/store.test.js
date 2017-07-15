@@ -27,7 +27,10 @@ test('Should commit and dispatch', () => {
 
   let actions = {
     fetchNameFromNetwork: (state) => {
-      state.commit('setName', 'niniFromNetwork');
+      return new Promise((resolve, reject) => {
+        state.commit('setName', 'niniFromNetwork');
+        resolve();
+      });
     }
   }
 
@@ -35,8 +38,9 @@ test('Should commit and dispatch', () => {
   store.commit('setName', 'nini');
   expect(store.state.name).toEqual('nini');
 
-  store.dispatch('fetchNameFromNetwork');
-  expect(store.state.name).toEqual('niniFromNetwork');
+  store.dispatch('fetchNameFromNetwork').then(_ => {
+    expect(store.state.name).toEqual('niniFromNetwork');
+  });
 
   // store.observe('name', (val) => {
   //   expect(store.state.name).toEqual('niniFromObserver');
